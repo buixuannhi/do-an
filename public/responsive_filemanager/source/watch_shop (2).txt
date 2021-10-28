@@ -1,0 +1,354 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.3
+-- https://www.phpmyadmin.net/
+--
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th3 12, 2021 lúc 03:06 PM
+-- Phiên bản máy phục vụ: 10.4.14-MariaDB
+-- Phiên bản PHP: 7.2.34
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Cơ sở dữ liệu: `watch_shop`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `accounts`
+--
+
+CREATE TABLE `accounts` (
+  `accountid` varchar(36) COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `password` varchar(256) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `fullname` varchar(50) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `address` varchar(200) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `phone` varchar(50) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `picture` varchar(256) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `isadmin` tinyint(1) DEFAULT NULL,
+  `active` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `accounts`
+--
+
+INSERT INTO `accounts` (`accountid`, `username`, `password`, `fullname`, `address`, `phone`, `email`, `picture`, `isadmin`, `active`) VALUES
+('', 'nhi', 'c7d7642d8857f73650bf1574da67f357', 'sdfsdf', NULL, NULL, NULL, NULL, NULL, NULL),
+('00af8d293c0974c7bb2b24e94b57b7eb', 'kjjkk', '114837881b7daf47ebb3e07aacb6ae21', 'bùi xuân nhị', 'Từ Liêm- Hà Nội', '123456789', NULL, NULL, NULL, NULL),
+('1', 'admin', 'a66abb5684c45962d887564f08346e8d', 'Bùi Xuân Nhị', 'hà nội', '0397989168', 'buixuannhi@gmail.ocm', NULL, NULL, NULL),
+('34068808625affa696437e8c0b282704', 'sfsdf', 'a9e67a5f868d384e12439607669e03dd', 'dfgfdgd', NULL, NULL, NULL, NULL, NULL, NULL),
+('341e40d6a50d8c6d88e2527c23c8cc99', 'SDFSDF', 'ddaaa24dd8f854473f1e2c5983c932fd', 'SDFDSF', NULL, NULL, NULL, NULL, NULL, NULL),
+('3bd0f870679a17536d5e51083fbf2513', 'DSFGSDG', 'f62efd78e2cf94d77e8fad4729bdbbac', 'SDGSDG', NULL, NULL, NULL, NULL, NULL, NULL),
+('65c19485e3cc599116d3cb3d0d1fe44f', 'anh', '0ab1c6751dfa29a8780321c8fe6bbb7b', 'JHZKJHC', NULL, NULL, NULL, NULL, NULL, NULL),
+('7c3cf76abd9dc60d5b128564338d5f9f', 'qưerty', '1f74d404c359131fe936e7ded6fb4cab', 'nguyễn văn a', 'Từ Liêm- Hà Nội', '132131566', 'test@gamil.com', NULL, NULL, NULL),
+('8a0f0243b919da6a2c7b84b05e7f17b5', 'test', '47ec2dd791e31e2ef2076caf64ed9b3d', 'nguyễn siêu nhân', 'bắc từ liêm-hà nội', '039789565', 'test@gamil.com', NULL, NULL, NULL),
+('9446206654188f4539c912b2e840550f', 'chaphet', '82b5bf0e713bf73052e4ff968c6bf8dc', 'Nguyên Siêu Nhân ', 'Từ Liêm- Hà Nội', NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username1` varchar(50) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `password1` varchar(50) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `fullname1` varchar(50) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `picture1` varchar(100) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `admin`
+--
+
+INSERT INTO `admin` (`id`, `username1`, `password1`, `fullname1`, `picture1`) VALUES
+(1, 'admin', '123456', 'Bùi Xuân Nhị', ''),
+(2, 'nhi', 'ee1270723e7bccc972fe88aa489a42b5', 'nguyễn văn a', ''),
+(300, 'quantri', '421b2efbec10dd52ff206e275ce0300a', 'nguyễn văn a', '');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `categories`
+--
+
+CREATE TABLE `categories` (
+  `categoryid` int(11) NOT NULL,
+  `categoryname` varchar(100) COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `parentid` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `categories`
+--
+
+INSERT INTO `categories` (`categoryid`, `categoryname`, `parentid`) VALUES
+(1, 'đông hồ nam', 1),
+(2, 'đồng hồ nữ', 2),
+(40, 'hfjh', NULL),
+(41, 'nn', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `comments`
+--
+
+CREATE TABLE `comments` (
+  `commentid` int(11) NOT NULL,
+  `accountid` varchar(36) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `watchid` varchar(20) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `content` varchar(500) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `orderdetails`
+--
+
+CREATE TABLE `orderdetails` (
+  `orderdetailid` int(11) NOT NULL,
+  `orderid` varchar(16) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `watchid` varchar(20) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `orderdetails`
+--
+
+INSERT INTO `orderdetails` (`orderdetailid`, `orderid`, `watchid`, `price`, `quantity`) VALUES
+(22, 'a7af3b8a643642d9', 'd2', 5000000, 5),
+(23, 'a7af3b8a643642d9', 'd5', 231345, 1),
+(26, '5416ad8a9d6f396d', 'd1', 5000000, 1),
+(27, '5416ad8a9d6f396d', 'd2', 5000000, 1),
+(30, 'f5c179b7a64fd8b2', 'd1', 5000000, 1),
+(31, 'f5c179b7a64fd8b2', 'd2', 5000000, 3),
+(32, '108ac89bf1fd25a8', 'd1', 5000000, 1),
+(33, '108ac89bf1fd25a8', 'd2', 5000000, 3),
+(34, 'dc6ee275fdb3d68d', 'd2', 5000000, 1),
+(35, 'dc6ee275fdb3d68d', 'd1', 5000000, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `orders`
+--
+
+CREATE TABLE `orders` (
+  `orderid` varchar(16) COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `orderdate` datetime DEFAULT NULL,
+  `accountid` varchar(36) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `receiveaddress` varchar(256) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `receivephone` varchar(50) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `totalmoney` int(11) DEFAULT NULL,
+  `note` varchar(500) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `orderstatus` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `orders`
+--
+
+INSERT INTO `orders` (`orderid`, `orderdate`, `accountid`, `receiveaddress`, `receivephone`, `totalmoney`, `note`, `orderstatus`) VALUES
+('108ac89bf1fd25a8', '2021-01-29 06:44:44', '', 'ádasdasdasdasa', '245245', 20000000, 'ádasdasdasda', 1),
+('5416ad8a9d6f396d', '2021-01-29 06:20:17', '1', 'hà nội', ' 0397989168', 10000000, '', 1),
+('a7af3b8a643642d9', '2021-01-26 09:15:35', '1', 'hà nội', ' 0397989168', 25231345, '', 1),
+('dc6ee275fdb3d68d', '2021-02-04 07:44:07', '', '12 do duc duc', '0364271333', 10000000, '', 1),
+('f5c179b7a64fd8b2', '2021-01-29 06:43:05', '', 'ádasdasdasdasa', '245245', 20000000, 'ádasdasdasda', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `slideshow`
+--
+
+CREATE TABLE `slideshow` (
+  `slideshowid` int(11) NOT NULL,
+  `picture` varchar(512) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `title` varchar(128) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `description` varchar(512) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `test`
+--
+
+CREATE TABLE `test` (
+  `username` varchar(20) COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `password` varchar(20) COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `fullname` varchar(50) COLLATE utf8mb4_unicode_nopad_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `test`
+--
+
+INSERT INTO `test` (`username`, `password`, `fullname`) VALUES
+('buinhi', '139187d038d83971c067', 'bùi xuân nhị');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `watch`
+--
+
+CREATE TABLE `watch` (
+  `watchid` varchar(20) COLLATE utf8mb4_unicode_nopad_ci NOT NULL,
+  `watchname` varchar(200) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `picture` varchar(200) COLLATE utf8mb4_unicode_nopad_ci DEFAULT NULL,
+  `categoryid` int(11) DEFAULT NULL,
+  `createdate` datetime DEFAULT NULL,
+  `brief` varchar(50) COLLATE utf8mb4_unicode_nopad_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_nopad_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `watch`
+--
+
+INSERT INTO `watch` (`watchid`, `watchname`, `price`, `description`, `picture`, `categoryid`, `createdate`, `brief`) VALUES
+('d1', 'đồng hồ mini', 5000000, '<p>C&ugrave;ng kh&aacute;m ph&aacute; những mẫu đồng hồ nam đẹp nhất từ c&aacute;c thương hiệu đồng hồ nam gi&aacute; rẻ như Orient, Seiko, Citizen, Ogival, OP, Bentley, Festina, Freelook, Bulova, Srwatch.. đến c&aacute;c h&atilde;ng đồng hồ nam cao cấp Thụy Sĩ như Ogival, Elixa, Michael Kors... được Xwatch ph&acirc;n phối để lựa chọn tri kỷ thời gian v&agrave; khẳng định phong c&aacute;ch thời trang của ri&ecirc;ng m&igrave;nh. Duy nhất khi mua đồng hồ nam tại shop đồng hồ Xwatch, bạn sẽ được hưởng chế độ bảo hiểm đồng hồ 5 năm CẢ LỖI NGƯỜI D&Ugrave;NG c&ugrave;ng cam kết 100% ĐỒNG HỒ CH&Iacute;NH H&Atilde;NG - Đền gấp 10 lần nếu ph&aacute;t hiện đồng hồ Fake.&quot;</p>\r\n', 'img/donghonam2.jpg', 1, '2021-01-30 00:00:00', 'Đồng hồ Jacques Lemans JL-1-1654.2ZD\"'),
+('d2', 'đồng hồ nữ', 5000000, '<p>C&ugrave;ng kh&aacute;m ph&aacute; những mẫu đồng hồ nam đẹp nhất từ c&aacute;c thương hiệu đồng hồ nam gi&aacute; rẻ như Orient, Seiko, Citizen, Ogival, OP, Bentley, Festina, Freelook, Bulova, Srwatch.. đến c&aacute;c h&atilde;ng đồng hồ nam cao cấp Thụy Sĩ như Ogival, Elixa, Michael Kors... được Xwatch ph&acirc;n phối để lựa chọn tri kỷ thời gian v&agrave; khẳng định phong c&aacute;ch thời trang của ri&ecirc;ng m&igrave;nh. Duy nhất khi mua đồng hồ nam tại shop đồng hồ Xwatch, bạn sẽ được hưởng chế độ bảo hiểm đồng hồ 5 năm CẢ LỖI NGƯỜI D&Ugrave;NG c&ugrave;ng cam kết 100% ĐỒNG HỒ CH&Iacute;NH H&Atilde;NG - Đền gấp 10 lần nếu ph&aacute;t hiện đồng hồ Fake.&quot;</p>\r\n', 'img/donghonu.jpg', 2, '0000-00-00 00:00:00', 'Đồng Hồ Nữ JA-1065B Julius Hàn Quốc Dây Thép'),
+('d5', 'đồng hồ cặp 10', 231345, '<p>cám bán ,, bán mẹ đánh</p>\r\n\r\n<p>&quot;</p>\r\n\r\n<p>&quot;</p>\r\n', 'img/donghocap4.jpg', 1, '2021-01-26 00:00:00', '\r\n\r\nĐồng hồ đôi Ernest Borel GG850D-2311BR + LG850'),
+('dsssdsdsdsdsd', '13sdsadetd', 123, '2131', 'img/dongho2.jpg', 1, '2021-03-09 10:28:29', '3123231231233');
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `accounts`
+--
+ALTER TABLE `accounts`
+  ADD PRIMARY KEY (`accountid`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Chỉ mục cho bảng `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`categoryid`);
+
+--
+-- Chỉ mục cho bảng `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`commentid`),
+  ADD KEY `accountid` (`accountid`),
+  ADD KEY `watchid` (`watchid`);
+
+--
+-- Chỉ mục cho bảng `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  ADD PRIMARY KEY (`orderdetailid`),
+  ADD KEY `orderid` (`orderid`),
+  ADD KEY `watchid` (`watchid`);
+
+--
+-- Chỉ mục cho bảng `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`orderid`),
+  ADD KEY `accountid` (`accountid`);
+
+--
+-- Chỉ mục cho bảng `slideshow`
+--
+ALTER TABLE `slideshow`
+  ADD PRIMARY KEY (`slideshowid`);
+
+--
+-- Chỉ mục cho bảng `watch`
+--
+ALTER TABLE `watch`
+  ADD PRIMARY KEY (`watchid`),
+  ADD KEY `categoryid` (`categoryid`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT cho bảng `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `commentid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  MODIFY `orderdetailid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT cho bảng `slideshow`
+--
+ALTER TABLE `slideshow`
+  MODIFY `slideshowid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`accountid`) REFERENCES `accounts` (`accountid`),
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`watchid`) REFERENCES `watch` (`watchid`);
+
+--
+-- Các ràng buộc cho bảng `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  ADD CONSTRAINT `orderdetails_ibfk_1` FOREIGN KEY (`orderid`) REFERENCES `orders` (`orderid`),
+  ADD CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`watchid`) REFERENCES `watch` (`watchid`);
+
+--
+-- Các ràng buộc cho bảng `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`accountid`) REFERENCES `accounts` (`accountid`);
+
+--
+-- Các ràng buộc cho bảng `watch`
+--
+ALTER TABLE `watch`
+  ADD CONSTRAINT `watch_ibfk_1` FOREIGN KEY (`categoryid`) REFERENCES `categories` (`categoryid`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
